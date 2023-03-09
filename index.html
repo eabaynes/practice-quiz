@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      
+        <link rel="stylesheet" href="./src/style.css" />
+        <title>Javascript Quiz Game</title>
+    </head>
+    <body>
+        <header>
+            <h1>JavaScript Quiz Game</h1>
+        </header>
+        <main>
+            <div class="container">
+                <div class="start">
+                    <h2>How well do you know JavaScript?</h2>
+                    <button id="start" class="start-btn">Start Quiz</button>
+                </div>
+                <div id="quiz" class="quiz">
+                    <div class="question">
+                        <h2>Question</h2>
+                        <p id="question-text" class="question-text"></p>
+                    </div>
+                    <div id="answers" class="answers">
+                        <button class="answer-btn"></button>
+                        <button class="answer-btn"></button>
+                        <button class="answer-btn"></button>
+                        <button class="answer-btn"></button>
+                    </div>
+                </div>
+                <div class="end">
+                    <h2>Game Over</h2>
+                    <p id="score" class="final-score"></p>
+                    <button id="restart" class="restart-btn">Restart</button>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
