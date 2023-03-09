@@ -182,113 +182,6 @@ const questions = [
     }
 ];
 
-// function to get 10 random questions from the questions array
-function getRandomQuestions() {
-    // create a new array to hold the random questions
-    let randomQuestions= [];
-
-    // loop through the questions array and get 10 random questions
-    for (let i = 0; i < 10; i++) {
-        // get a random number between 0 and the length of the questions array
-        let randomIndex = Math.floor(Math.random() * questions.length);
-        // add the random question to the randomQuestions array
-        randomQuestions.push(questions[randomIndex]);
-    }
-
-    // make sure there are no duplicate questions and remove them if they are
-    for (let i = 0; i < randomQuestions.length; i++) {
-        for (let j = i + 1; j < randomQuestions.length; j++) {
-            if (randomQuestions[i].question === randomQuestions[j].question) {
-                randomQuestions.splice(j, 1);
-            }
-        }
-    }
-
-    // run through the function again if there are less than 10 questions
-    if (randomQuestions.length < 10) {
-        getRandomQuestions();
-    }
-
-    // return the random questions
-    return randomQuestions;
-}
-
-// function to end the quiz early
-function endQuiz() {
-    // clear the question container
-    questionContainer.innerHTML = "";
-    // clear the answer buttons
-    answerButtons.innerHTML = "";
-    // pop up a message to tell the user the quiz is over and get initials
-    const initials = prompt("Quiz over! Enter your initials to save your score.");
-    // create a list item and append it to the high scores list
-    const highScore = document.createElement("li");
-    highScore.textContent = initials + " - " + score;
-    highScores.appendChild(highScore);
-}
-
-// function to start the timer
-function startTimer() {
-    // set the time to 120 seconds
-    time = 120;
-
-    // set the timer to 1 second intervals
-    timer = setInterval(function() {
-        // decrease the time by 1 second
-        time--;
-
-        // get the timer element
-        const timerElement = document.getElementById("timer");
-
-        // set the timer element to the time
-        timerElement.textContent = time;
-
-        // if the time is 0, stop the timer and end the quiz
-        if (time === 0) {
-            clearInterval(timer);
-            endQuiz();
-        }
-    }, 1000);
-}
-
-// function to start the quiz
-function startQuiz() {
-    // hide the start button
-    startButton.classList.add("hide");
-
-    // start a two minute timer
-    startTimer();
-
-    // set the score to 0
-    score = 0;
-
-    // call the random questions function
-    randomQuestions = getRandomQuestions();
-
-    // set the current question to index 0 of the random questions array
-    currentQuestion = randomQuestions[0];
-
-    // get the question text
-    const questionText = currentQuestion.question;
-
-    // get the answer texts
-    const answerTexts = currentQuestion.answers;
-
-    // set the question text
-    questionContainer.textContent = questionText;
-
-    // loop through the answer buttons and set the text
-    for (let i = 0; i < answerButtons.length; i++) {
-        answerButtons[i].textContent = answerTexts[i].text;
-    }
-
-    // add an event listener to each button
-    answerButtons.forEach(button => {
-        button.addEventListener("click", selectAnswer);
-    });
-}
-
-
 // get the question container
 const questionContainer = document.getElementById("question-text")
 
@@ -304,7 +197,14 @@ const finalScoreContainer = document.getElementById("score");
 // get the restart button
 const restartButton = document.getElementById("restart");
 
+// high scores container
 const highScores = document.getElementById("high-scores");
+
+// get the timer element
+const timer = document.getElementById("timer");
+
+// get the score element
+const score = document.getElementById("score");
 
 // add event listener to the start button
 startButton.addEventListener("click", startQuiz);
@@ -312,7 +212,119 @@ startButton.addEventListener("click", startQuiz);
 // add event listener to the restart button
 restartButton.addEventListener("click", restartQuiz);
 
-// add event listener to the answer buttons
-for (let i = 0; i < answerButtons.length; i++) {
-    answerButtons[i].addEventListener("click", selectAnswer);
+// function to end the quiz
+function endQuiz () {
+    // empty the question container
+    questionContainer.innerHTML = "";
+    // empty the answer buttons
+    for (let i = 0; i < answerButtons.length; i++) {
+        answerButtons[i].innerHTML = "";
+    }
+    // prompt the user to enter their initials
+    const initials = prompt("Enter your initials");
+    // get the final score
+    const finalScore = timer + score;
+
+    // create a new object to store the initials and score
+    const newScore = {
+        initials: initials,
+        score: finalScore
+    }
+
+    // add the new score to the high score ul as an li
+    const newScoreLi = document.createElement("li");
+    newScoreLi.textContent = newScore.initials + " - " + newScore.score;
+    highScores.appendChild(newScoreLi);
 };
+
+// funtion to start the timer
+function startTimer () {
+    // set the time to 120 seconds
+    let timeLeft = 120;
+
+    // set the timer to count down every second
+    const timer = setInterval(function() {
+        // if the time is greater than 0
+        if (timeLeft > 0) {
+            // decrement the time
+            timeLeft--;
+            // display the time
+            document.getElementById("timer").innerHTML = timeLeft;
+        } else {
+            // stop the timer
+            clearInterval(timer);
+            // run the end quiz function
+            endQuiz();
+        }
+    });
+};
+
+// function to display the question
+function displayQuestion () {
+    // get the current question
+    const currentQuestion = questions[currentQuestion];
+    // display the current question
+    questionContainer.textContent = currentQuestion.question;
+    // loop through the current questions answers
+    for (let i = 0; i < currentQuestion.answers.length; i++) {
+        // set the answer buttons text to the current answer
+        answerButtons[i].textContent = currentQuestion.answers[i].text;
+        // set the data correct attribute to the current answer
+        answerButtons[i].setAttribute("data-correct", currentQuestion.answers[i].correct);
+    }
+};
+
+// function to handle the answer buttons
+function answerButtonClick () {
+    // if the answer is correct
+    if (this.getAttribute("data-correct") === "true") {
+        // add 10 to the score
+        score += 10;
+        // if the answer is incorrect
+    } else {
+        // subtract 10 from the time
+        timeLeft -= 10;
+    }
+
+    // increment the current question
+    currentQuestion++;
+    // if the current question is less than the length of the questions array
+    if (currentQuestion < questions.length) {
+        // run the display question function
+        displayQuestion();
+        // if the current question is greater than or equal to the length of the questions array
+    } else {
+        // run the end quiz function
+        endQuiz();
+    }
+}
+
+// function to start the quiz
+function startQuiz () {
+    // start the timer
+    startTimer();
+    // set the current question to 0
+    let currentQuestion = 0;
+    // set the score to 0
+    let score = 0;
+
+    // run the display question function
+    displayQuestion();
+    // loop through the answer buttons
+    for (let i = 0; i < answerButtons.length; i++) {
+        // add event listener to the answer buttons
+        answerButtons[i].addEventListener("click", answerButtonClick);
+    }
+};
+
+
+// function to restart the quiz
+function restartQuiz () {
+    // clear the score from the score element
+    score.innerHTML = "";
+    // clear the timer from the timer element
+    timer.innerHTML = "";
+
+    // run the start quiz function
+    startQuiz();
+}
