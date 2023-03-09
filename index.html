@@ -12,10 +12,11 @@
             <h1>JavaScript Quiz Game</h1>
         </header>
         <main>
-            <div class="container">
+            <section class="container">
                 <div class="start">
                     <h2>How well do you know JavaScript?</h2>
                     <button id="start" class="start-btn">Start Quiz</button>
+                    <p id="timer" class="timer"></p>
                 </div>
                 <div id="quiz" class="quiz">
                     <div class="question">
@@ -34,7 +35,11 @@
                     <p id="score" class="final-score"></p>
                     <button id="restart" class="restart-btn">Restart</button>
                 </div>
-            </div>
+            </section>
+            <section id="scores">
+                <h2>High Scores</h2>
+                <ul id="high-scores" class="high-scores"></ul>
+            </section>
         </main>
     </body>
 </html>
