@@ -109,6 +109,7 @@ let answerContainer = document.getElementById('answers');
 let currentScore = document.getElementById('current-score');
 const highScores = document.getElementById('high-scores');
 const submitButton = document.getElementById('submit-btn');
+const restartButton = document.getElementById('restart-btn');
 const intro = document.getElementById('intro');
 const quiz = document.getElementById('quiz');
 const scores = document.getElementById('scores');
@@ -124,21 +125,169 @@ hideGameOver();
 
 // Functions
 
-// Hide the Quiz container at the start
+// Hide the Quiz container
 function hideQuiz() {
     quiz.classList.add('hidden');
 };
 
-// Hide the High Scores container at the start
+// Hide the High Scores container
 function hideHighScores() {
     scores.classList.add('hidden');
 }
 
-// Hide the Game Over container at the start
+// Hide the Game Over container
 function hideGameOver() {
     gameOver.classList.add('hidden');
+}
+
+// Hide the Intro container
+function hideIntro() {
+    intro.classList.add('hidden');
 }
 
 // Begin the question index at 0
 let questionIndex = 0;
 
+
+// Get the first question
+function startQuestions () {
+    questionContainer.textContent = questions[questionIndex].question;
+    answerContainer.innerHTML = '';
+    for (let i = 0; i < questions[questionIndex].choices.length; i++) {
+        let answer = document.createElement('button');
+        answer.textContent = questions[questionIndex].choices[i];
+        answer.setAttribute('class', 'answer');
+        answer.addEventListener('click', checkAnswer);
+        answerContainer.appendChild(answer);
+    }
+}
+
+// Callback function for the submit button
+function submitHandler (event) {
+    event.preventDefault();
+
+    let initials = document.getElementById('initials').value;
+    let finalScore = document.getElementById('final-score').textContent;
+    finalScore = timeSeconds;
+
+    let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+
+    let newScore = {
+        initials: initials,
+        score: finalScore
+    };
+
+    highScores.push(newScore);
+    localStorage.setItem('highScores', JSON.stringify(highScores));
+
+    // hide the submit button
+    submitButton.classList.add('hidden');
+}
+
+// Callback function for the restart button
+function restartQuiz (event) {
+    event.preventDefault();
+    // delete the final score element
+    let finalScore = document.getElementById('final-score');
+    finalScore.remove();
+
+    // reset the question index
+    questionIndex = 0;
+    // reset the time
+    timeSeconds = 30;
+    // reset the score
+    currentScore.textContent = 0;
+    // hide the high scores container
+    hideHighScores();
+    // hide the game over container
+    hideGameOver();
+    // show the intro container
+    intro.removeAttribute('class', 'hidden');
+};
+
+
+// End the quiz and show the high scores
+function gameEnd () {
+    // show the submit button if it is hidden
+    submitButton.classList.remove('hidden');
+    // create an element to hold the final score
+    let finalScore = document.createElement('p');
+    // set the text content of the final score element
+    finalScore.textContent = timeSeconds;
+    // set the id of the final score element
+    finalScore.setAttribute('id', 'final-score');
+    // append the final score element to the game over container after the h3 element
+    gameOver.insertBefore(finalScore, gameOver.children[2]);
+    // show the scores container
+    scores.removeAttribute('class', 'hidden');
+    // show the game over container
+    gameOver.removeAttribute('class', 'hidden');
+
+    // get high scores from local storage
+    let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+    // sort high scores
+    highScores.sort(function(a, b) {
+        return b.score - a.score;
+    });
+    // display high scores
+    let highScoresList = document.getElementById('high-scores-list');
+    for (let i = 0; i < highScores.length; i++) {
+        let score = document.createElement('li');
+        score.textContent = highScores[i].initials + ' - ' + highScores[i].score;
+        highScoresList.appendChild(score);
+    }
+
+    let initials = document.getElementById('initials');
+
+    // 
+    hideQuiz();
+}
+
+// Check the answer
+function checkAnswer (event) {
+    if (event.target.textContent === questions[questionIndex].correctAnswer) {
+        // add 10 to the timer
+        timeSeconds += 10;
+        questionIndex++;
+        if (questionIndex < questions.length) {
+            startQuestions();
+        } else {
+            gameEnd();
+        }
+    } else {
+        // remove 10 seconds from the timer
+        timeSeconds -= 10;
+        questionIndex++;
+        if (questionIndex < questions.length) {
+            startQuestions();
+        } else {
+            gameEnd();
+        }
+    }
+}
+
+// Start the timer
+function startTimer () {
+    let timer = setInterval(function() {
+        timeSeconds--;
+        currentScore.textContent = timeSeconds;
+        if (timeSeconds <= 0) {
+            clearInterval(timer);
+            gameEnd();
+        }
+    }, interval);
+}
+
+// Start the quiz
+function startQuiz () {
+    hideIntro();
+    quiz.removeAttribute('class', 'hidden');
+    startTimer();
+    startQuestions();
+
+}
+
+// Event Listeners
+startButton.addEventListener('click', startQuiz);
+submitButton.addEventListener('click', submitHandler)
+restartButton.addEventListener('click', restartQuiz);
