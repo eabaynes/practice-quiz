@@ -1,0 +1,12 @@
+.scores-wrapper {
+    background-color: #54934c;
+    font-size: 20px;
+    font-weight: 700;
+    color:#fff;
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
