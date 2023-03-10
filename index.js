@@ -2,329 +2,143 @@
 const questions = [
     {
         question: "What is JavaScript?",
-        answers: [
-            { text: "A programming language", correct: true },
-            { text: "A database", correct: false },
-            { text: "A framework", correct: false },
-            { text: "A library", correct: false }
-        ]
+        choices: [ "A programming language", "A database", "A framework", "A library" ],
+        correctAnswer: "A programming language"
     },
     {
         question: "What kind of language is JavaScript?",
-        answers: [
-            { text: "Functional", correct: false },
-            { text: "Procedural", correct: false },
-            { text: "None of the above", correct: false },
-            { text: "Object-oriented", correct: true }
-        ]
+        choices: [ "Functional", "Procedural", "None of the above", "Object-oriented" ],
+        correctAnswer: "Object-oriented"
     },
     {
         question: "What is the most common use of JavaScript?",
-        answers: [
-            { text: "Creating web pages", correct: true },
-            { text: "Creating mobile apps", correct: false },
-            { text: "Creating desktop apps", correct: false },
-            { text: "Creating games", correct: false }
-        ]
+        choices: [ "Creating web pages", "Creating mobile apps", "Creating desktop apps", "Creating games" ],
+        correctAnswer: "Creating web pages"
     },
     {
         question: "What is a function?",
-        answers: [
-            { text: "A container to hold a value", correct: false },
-            { text: "A block of code that runs when it is called", correct: true },
-            { text: "A block of code that runs until a condition is met", correct: false },
-            { text: "A primitive data type", correct: false }
-        ]
+        choices: [ "A container to hold a value", "A block of code that runs when it is called", "A block of code that runs until a condition is met", "A primitive data type" ],
+        correctAnswer: "A block of code that runs when it is called"
     },
     {
         question: "What does DOM stand for?",
-        answers: [
-            { text: "Document Orientation Model", correct: false },
-            { text: "Document Object Modeling", correct: false },
-            { text: "Document Object Model", correct: true },
-            { text: "Document Orientation Modeling", correct: false }
-        ]
+        choices: [ "Document Orientation Model", "Document Object Modeling", "Document Object Model", "Document Orientation Modeling" ],
+        correctAnswer: "Document Object Model"
     },
     {
         question: "What is the DOM?",
-        answers: [
-            { text: "A programming language", correct: false },
-            { text: "A database", correct: false },
-            { text: "A framework", correct: false },
-            { text: "An object-oriented representation of an HTML document", correct: true }
-        ]
+        choices: [ "A programming language", "A database", "A framework", "An object-oriented representation of an HTML document" ],
+        correctAnswer: "An object-oriented representation of an HTML document"
     },
     {
         question: "What is an API?",
-        answers: [
-            { text: "A programming language", correct: false },
-            { text: "A database", correct: false },
-            { text: "A set of functions that allow programs to communicate with each other", correct: true },
-            { text: "A framework", correct: false }
-        ]
+        choices: [ "A programming language", "A database", "A set of functions that allow programs to communicate with each other", "A framework" ],
+        correctAnswer: "A set of functions that allow programs to communicate with each other"
     },
     {
         question: "What is the difference between const and let?",
-        answers: [
-            { text: "const is used to declare a variable that cannot be changed, and let is used to declare a variable that can be changed", correct: true },
-            { text: "const is used to declare a variable that can be changed, and let is used to declare a variable that cannot be changed", correct: false },
-            { text: "const is used to declare a variable that can be changed, and let is used to declare a variable that can be changed", correct: false },
-            { text: "const is used to declare a variable that cannot be changed, and let is used to declare a variable that cannot be changed", correct: false }
-        ]
+        choices: [ "const is used to declare a variable that cannot be changed, and let is used to declare a variable that can be changed", "const is used to declare a variable that can be changed, and let is used to declare a variable that cannot be changed", "const is used to declare a variable that can be changed, and let is used to declare a variable that can be changed", "const is used to declare a variable that cannot be changed, and let is used to declare a variable that cannot be changed" ],
+        correctAnswer: "const is used to declare a variable that cannot be changed, and let is used to declare a variable that can be changed"
     },
     {
         question: "What is a string?",
-        answers: [
-            { text: "A primitive data type", correct: true },
-            { text: "A block of code that runs when it is called", correct: false },
-            { text: "A block of code that runs until a condition is met", correct: false },
-            { text: "A container to hold a value", correct: false }
-        ]
+        choices: [ "A primitive data type", "A block of code that runs when it is called", "A block of code that runs until a condition is met", "A container to hold a value" ],
+        correctAnswer: "A primitive data type"
     },
     {
         question: "What purpose does a function serve?",
-        answers: [
-            { text: "To store a value", correct: false },
-            { text: "To run a block of code", correct: true },
-            { text: "To run a block of code until a condition is met", correct: false },
-            { text: "To store a block of code", correct: false }
-        ]
+        choices: [ "To store a value", "To run a block of code", "To run a block of code until a condition is met", "To store a block of code" ],
+        correctAnswer: "To run a block of code"
     },
     {
         question: "What is a boolean?",
-        answers: [
-            { text: "A primitive data type", correct: true },
-            { text: "A block of code that runs when it is called", correct: false },
-            { text: "A block of code that runs until a condition is met", correct: false },
-            { text: "A container to hold a value", correct: false }
-        ]
+        choices: [ "A primitive data type", "A block of code that runs when it is called", "A block of code that runs until a condition is met", "A container to hold a value" ],
+        correctAnswer: "A primitive data type"
     },
     {
         question: "What is a loop?",
-        answers: [
-            { text: "A block of code that runs until a condition is met", correct: true },
-            { text: "A block of code that runs when it is called", correct: false },
-            { text: "A container to hold a value", correct: false },
-            { text: "A primitive data type", correct: false }
-        ]
+        choices: [ "A block of code that runs until a condition is met", "A block of code that runs when it is called", "A container to hold a value", "A primitive data type" ],
+        correctAnswer: "A block of code that runs until a condition is met"
     },
     {
         question: "What are the three primitive data types?",
-        answers: [
-            { text: "string, number, object", correct: false },
-            { text: "string, number, boolean", correct: true },
-            { text: "string, number, array", correct: false },
-            { text: "string, number, function", correct: false }
-        ]
+        choices: [ "string, number, object", "string, number, boolean", "string, number, array", "string, number, function" ],
+        correctAnswer: "string, number, boolean"
     },
     {
         question: "What is an array?",
-        answers: [
-            { text: "A container to hold a value", correct: false },
-            { text: "A block of code that runs when it is called", correct: false },
-            { text: "A container to hold multiple values", correct: true },
-            { text: "A primitive data type", correct: false }
-        ]
+        choices: [ "A container to hold a value", "A block of code that runs when it is called", "A container to hold multiple values", "A primitive data type" ],
+        correctAnswer: "A container to hold multiple values"
     },
     {
         question: "What does return do and where does it go?",
-        answers: [
-            { text: "It returns a value from a loop", correct: false },
-            { text: "It returns a value from a variable", correct: false },
-            { text: "It returns a value from a string", correct: false },
-            { text: "It returns a value from a function", correct: true }
-        ]
+        choices: [ "It returns a value from a loop", "It returns a value from a variable", "It returns a value from a string", "It returns a value from a function" ],
+        correctAnswer: "It returns a value from a function"
     },
     {
         question: "What is a callback function?",
-        answers: [
-            { text: "A function that is passed into another function as an argument", correct: true },
-            { text: "A function that is called by another function", correct: false },
-            { text: "A function that is called by a loop", correct: false },
-            { text: "A function that is called by a variable", correct: false }
-        ]
+        choices: [ "A function that is passed into another function as an argument", "A function that is called by another function", "A function that is called by a loop", "A function that is called by a variable" ],
+        correctAnswer: "A function that is passed into another function as an argument"
     },
     {
         question: "What is a method?",
-        answers: [
-            { text: "A function that is called by another function", correct: false },
-            { text: "A function that is passed into another function as an argument", correct: false },
-            { text: "A function that is called by a loop", correct: false },
-            { text: "A function that is called by an object", correct: true }
-        ]
+        choices: [ "A function that is called by another function", "A function that is passed into another function as an argument", "A function that is called by a loop", "A function that is called by an object" ],
+        correctAnswer: "A function that is called by an object"
     },
     {
         question: "What is an object?",
-        answers: [
-            { text: "A container to hold a value", correct: false },
-            { text: "A block of code that runs when it is called", correct: false },
-            { text: "A collection of properties", correct: true },
-            { text: "A container to hold multiple values", correct: false }
-        ]
+        choices: [ "A container to hold a value", "A block of code that runs when it is called", "A collection of properties", "A container to hold multiple values" ],
+        correctAnswer: "A collection of properties"
     },
     {
         question: "What is a property?",
-        answers: [
-            { text: "A container to hold a value", correct: false },
-            { text: "A block of code that runs when it is called", correct: false },
-            { text: "A container to hold multiple values", correct: false },
-            { text: "A value that is assigned to an object", correct: true }
-        ]
+        choices: [ "A container to hold a value", "A block of code that runs when it is called", "A container to hold multiple values", "A value that is assigned to an object" ],
+        correctAnswer: "A value that is assigned to an object"
     },
     {
         question: "What is a class?",
-        answers: [
-            { text: "A blueprint for creating objects", correct: true },
-            { text: "A container to hold a value", correct: false },
-            { text: "A block of code that runs when it is called", correct: false },
-            { text: "A container to hold multiple values", correct: false }
-        ]
+        choices: [ "A blueprint for creating objects", "A container to hold a value", "A block of code that runs when it is called", "A container to hold multiple values" ],
+        correctAnswer: "A blueprint for creating objects"
     }
 ];
 
-// get the question container
-const questionContainer = document.getElementById("question-text")
+// Global Variables
+const startButton = document.getElementById('start-btn');
+let questionContainer = document.getElementById('question-text');
+let answerContainer = document.getElementById('answers');
+let currentScore = document.getElementById('current-score');
+const highScores = document.getElementById('high-scores');
+const submitButton = document.getElementById('submit-btn');
+const intro = document.getElementById('intro');
+const quiz = document.getElementById('quiz');
+const scores = document.getElementById('scores');
+const gameOver = document.getElementById('game-over');
 
-// get the button to start the quiz
-const startButton = document.getElementById("start");
+let timeSeconds = 30;
+const interval = 1000;
 
-// get all the answer buttons
-const answerButtons = document.getElementsByClassName("answer-btn");
+// call the functions to hide the quiz and high scores containers
+hideQuiz();
+hideHighScores();
+hideGameOver();
 
-// get the container for the final score
-const finalScoreContainer = document.getElementById("score");
+// Functions
 
-// get the restart button
-const restartButton = document.getElementById("restart");
-
-// high scores container
-const highScores = document.getElementById("high-scores");
-
-// get the timer element
-const timer = document.getElementById("timer");
-
-// get the score element
-const score = document.getElementById("score");
-
-// add event listener to the start button
-startButton.addEventListener("click", startQuiz);
-
-// add event listener to the restart button
-restartButton.addEventListener("click", restartQuiz);
-
-// function to end the quiz
-function endQuiz () {
-    // empty the question container
-    questionContainer.innerHTML = "";
-    // empty the answer buttons
-    for (let i = 0; i < answerButtons.length; i++) {
-        answerButtons[i].innerHTML = "";
-    }
-    // prompt the user to enter their initials
-    const initials = prompt("Enter your initials");
-    // get the final score
-    const finalScore = timer + score;
-
-    // create a new object to store the initials and score
-    const newScore = {
-        initials: initials,
-        score: finalScore
-    }
-
-    // add the new score to the high score ul as an li
-    const newScoreLi = document.createElement("li");
-    newScoreLi.textContent = newScore.initials + " - " + newScore.score;
-    highScores.appendChild(newScoreLi);
+// Hide the Quiz container at the start
+function hideQuiz() {
+    quiz.classList.add('hidden');
 };
 
-// funtion to start the timer
-function startTimer () {
-    // set the time to 120 seconds
-    let timeLeft = 120;
-
-    // set the timer to count down every second
-    const timer = setInterval(function() {
-        // if the time is greater than 0
-        if (timeLeft > 0) {
-            // decrement the time
-            timeLeft--;
-            // display the time
-            document.getElementById("timer").innerHTML = timeLeft;
-        } else {
-            // stop the timer
-            clearInterval(timer);
-            // run the end quiz function
-            endQuiz();
-        }
-    });
-};
-
-// function to display the question
-function displayQuestion () {
-    // get the current question
-    const currentQuestion = questions[currentQuestion];
-    // display the current question
-    questionContainer.textContent = currentQuestion.question;
-    // loop through the current questions answers
-    for (let i = 0; i < currentQuestion.answers.length; i++) {
-        // set the answer buttons text to the current answer
-        answerButtons[i].textContent = currentQuestion.answers[i].text;
-        // set the data correct attribute to the current answer
-        answerButtons[i].setAttribute("data-correct", currentQuestion.answers[i].correct);
-    }
-};
-
-// function to handle the answer buttons
-function answerButtonClick () {
-    // if the answer is correct
-    if (this.getAttribute("data-correct") === "true") {
-        // add 10 to the score
-        score += 10;
-        // if the answer is incorrect
-    } else {
-        // subtract 10 from the time
-        timeLeft -= 10;
-    }
-
-    // increment the current question
-    currentQuestion++;
-    // if the current question is less than the length of the questions array
-    if (currentQuestion < questions.length) {
-        // run the display question function
-        displayQuestion();
-        // if the current question is greater than or equal to the length of the questions array
-    } else {
-        // run the end quiz function
-        endQuiz();
-    }
+// Hide the High Scores container at the start
+function hideHighScores() {
+    scores.classList.add('hidden');
 }
 
-// function to start the quiz
-function startQuiz () {
-    // start the timer
-    startTimer();
-    // set the current question to 0
-    let currentQuestion = 0;
-    // set the score to 0
-    let score = 0;
-
-    // run the display question function
-    displayQuestion();
-    // loop through the answer buttons
-    for (let i = 0; i < answerButtons.length; i++) {
-        // add event listener to the answer buttons
-        answerButtons[i].addEventListener("click", answerButtonClick);
-    }
-};
-
-
-// function to restart the quiz
-function restartQuiz () {
-    // clear the score from the score element
-    score.innerHTML = "";
-    // clear the timer from the timer element
-    timer.innerHTML = "";
-
-    // run the start quiz function
-    startQuiz();
+// Hide the Game Over container at the start
+function hideGameOver() {
+    gameOver.classList.add('hidden');
 }
+
+// Begin the question index at 0
+let questionIndex = 0;
+
