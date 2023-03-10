@@ -1,0 +1,11 @@
+.hidden {
+    display: none;
+}
+
+header {
+    background-color: #03140a;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 25px;
+}
