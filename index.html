@@ -15,37 +15,48 @@
             <section class="container">
 
                 <section id="intro" class="start">
-                    <h2>How well do you know your JavaScript basics?</h2>
+                    <h2 class=" quiz-intro">How well do you know your JavaScript basics?</h2>
+                    <p>Test your knowledge with a quiz! The timer starts at 30 seconds. Each right answer adds 10 seconds, each wrong answer subtracts 10 seconds. If you reach 0, game's over!</p>
                     <button id="start-btn" class="start-btn">Start Quiz</button>
                 </section>
 
-                <section id="quiz" class="quiz">
+                <section id="quiz">
+                    <link rel="stylesheet" href="./assets/quiz.css"/>
+                    
+                    <section class="quiz-wrapper">
+                        <div class="question">
+                            <h2>Question</h2>
+                            <p id="question-text" class="question-text"></p>
+                        </div>
 
-                    <div class="question">
-                        <h2>Question</h2>
-                        <p id="question-text" class="question-text"></p>
-                    </div>
+                        <ul id="answers" class="answers">
+                        </ul>
 
-                    <ul id="answers" class="answers">
-                    </ul>
-
-                    <h3>Current Score:</h3>
-                    <p id="current-score" class="score"></p>
+                        <h3>Current Score:</h3>
+                        <p id="current-score" class="score"></p>
+                    </section>
                 </section>
 
-                <section id="game-over" class="game-over">
-                    <h2>Game Over</h2>
-                    <h3>Your final score is:</h3>
-                    <p id="score" class="final-score"></p>
-                    <button id="restart" class="restart-btn">Restart</button>
-                    <input type="text" id="initials" placeholder="Enter your initials" />
-                    <button id="submit-id" class="submit-btn">Submit Score</button>
-                </section>
-            </section>
+                <section id="game-over">
+                    <link rel="stylesheet" href="./assets/game-over.css"/>
+                    <section class="endgame">
+                        <h2>Game Over</h2>
+                        <h3>Your final score is:</h3>
+                        <input type="text" id="initials" placeholder="Enter your initials" class="input" />
+                        <button type="button" id="submit-btn" class="btn">Submit Score</button>
+                        <button type="button" id="restart-btn" class="btn">Restart</button>
+                    </section>
+                
+            
 
-            <section id="scores" class="scores">
-                <h2>High Scores</h2>
-                <ul id="high-scores" class="high-scores"></ul>
+                    <section id="scores" class="scores">
+                        <link rel="stylesheet" href="./assets/scores.css"/>
+                        <div class="scores-wrapper">
+                            <h2>High Scores</h2>
+                            <ul id="high-scores-list" class="high-scores"></ul>
+                        </div>
+                    </section>
+                </section>
             </section>
         </main>
 
