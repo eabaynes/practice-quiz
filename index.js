@@ -208,6 +208,8 @@ function restartQuiz (event) {
 
 // End the quiz and show the high scores
 function gameEnd () {
+    // get the finalh3 element
+    let endGame = document.getElementById('final-h3');
     // show the submit button if it is hidden
     submitButton.classList.remove('hidden');
     // create an element to hold the final score
@@ -216,8 +218,10 @@ function gameEnd () {
     finalScore.textContent = timeSeconds;
     // set the id of the final score element
     finalScore.setAttribute('id', 'final-score');
-    // append the final score element to the game over container after the h3 element
-    gameOver.insertBefore(finalScore, gameOver.children[2]);
+    // add class final-score to the final score element
+    finalScore.setAttribute('class', 'final-score');
+    // append the final score element after the 2nd child of the endgame container
+    endGame.after(finalScore)
     // show the scores container
     scores.removeAttribute('class', 'hidden');
     // show the game over container

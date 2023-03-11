@@ -39,23 +39,25 @@
 
                 <section id="game-over">
                     <link rel="stylesheet" href="./assets/game-over.css"/>
-                    <section class="endgame">
-                        <h2>Game Over</h2>
-                        <h3>Your final score is:</h3>
-                        <input type="text" id="initials" placeholder="Enter your initials" class="input" />
-                        <button type="button" id="submit-btn" class="btn">Submit Score</button>
-                        <button type="button" id="restart-btn" class="btn">Restart</button>
-                    </section>
+                    <div class="game-over-wrapper">
+                        <section class="endgame">
+                            <h2>Game Over</h2>
+                            <h3 id="final-h3">Your final score is:</h3>
+                            <input type="text" id="initials" placeholder="Enter your initials" class="input" />
+                            <button type="button" id="submit-btn" class="btn">Submit Score</button>
+                            <button type="button" id="restart-btn" class="btn">Restart</button>
+                        </section>
                 
             
 
-                    <section id="scores" class="scores">
-                        <link rel="stylesheet" href="./assets/scores.css"/>
-                        <div class="scores-wrapper">
-                            <h2>High Scores</h2>
-                            <ul id="high-scores-list" class="high-scores"></ul>
-                        </div>
-                    </section>
+                        <section id="scores" class="scores">
+                         <link rel="stylesheet" href="./assets/scores.css"/>
+                            <div class="scores-wrapper">
+                                <h2>High Scores</h2>
+                                <ul id="high-scores-list" class="high-scores"></ul>
+                            </div>
+                        </section>
+                    </div>
                 </section>
             </section>
         </main>
